@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Regression | Dashboard</title>
+
+    <!-- Google Fonts: Inter or Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="dashboard-container">
+
+        <!-- 1. Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <div class="logo-icon">UR</div>
+                <h2>Universal<span>Reg</span></h2>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active">
+                    <span class="icon">📊</span> Dashboard
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="icon">📁</span> Analyze
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="icon">⚙️</span> Settings
+                </a>
+            </nav>
+
+            <div class="user-profile-mini">
+                <div class="avatar">U</div>
+                <div class="user-info">
+                    <p class="name">User</p>
+                    <p class="role">Admin</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 2. Main Content Wrapper -->
+        <div class="main-wrapper">
+
+            <!-- Top Bar -->
+            <header class="topbar">
+                <div class="breadcrumbs">
+                    <h1>Dashboard</h1>
+                    <p>Overview & Analysis</p>
+                </div>
+                <div class="top-actions">
+                    <div class="search-bar">
+                        <span>🔍</span>
+                        <input type="text" placeholder="Search report...">
+                    </div>
+                    <button class="notif-btn">🔔</button>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <main class="dashboard-content">
+
+                <!-- Row 1: Quick Stats -->
+                <div class="stats-row">
+                    <div class="card stat-card">
+                        <div class="stat-icon green">📂</div>
+                        <div class="stat-info">
+                            <p>Dataset</p>
+                            <h3 id="file-info">No File</h3>
+                        </div>
+                    </div>
+                    <div class="card stat-card">
+                        <div class="stat-icon blue">X</div>
+                        <div class="stat-info">
+                            <p>Feature (X)</p>
+                            <h3 id="x-display">--</h3>
+                        </div>
+                    </div>
+                    <div class="card stat-card">
+                        <div class="stat-icon purple">Y</div>
+                        <div class="stat-info">
+                            <p>Target (Y)</p>
+                            <h3 id="y-display">--</h3>
+                        </div>
+                    </div>
+                    <div class="card stat-card">
+                        <div class="stat-icon orange">⚡</div>
+                        <div class="stat-info">
+                            <p>Status</p>
+                            <h3>Ready</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2: Analytics & Controls -->
+                <div class="analytics-row">
+
+                    <!-- Graph Section -->
+                    <div class="card graph-card">
+                        <div class="card-header">
+                            <h3>Regression Overview</h3>
+                            <div class="header-actions">
+                                <span class="badge" id="equation-display">y = mx + c</span>
+                            </div>
+                        </div>
+                        <div class="canvas-wrapper">
+                            <!-- Graph Image injected here -->
+                            <div class="placeholder-graph">
+                                <p>Import data to visualize regression</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Side Controls -->
+                    <div class="card control-card">
+                        <h3>Configuration</h3>
+
+                        <!-- Upload -->
+                        <div class="control-group" id="drop-zone">
+                            <label>1. Import Data</label>
+                            <input type="file" id="file-input" accept=".csv, .xlsx" hidden>
+                            <button class="btn secondary-btn full-width">
+                                <span>📥</span> Upload CSV/Excel
+                            </button>
+                        </div>
+
+                        <!-- Variables -->
+                        <div class="control-group disabled" id="column-selection">
+                            <label>2. Select Variables</label>
+                            <select id="x-variable" class="modern-select">
+                                <option value="" disabled selected>Select X</option>
+                            </select>
+                            <select id="y-variable" class="modern-select">
+                                <option value="" disabled selected>Select Y</option>
+                            </select>
+                        </div>
+
+                        <!-- Train -->
+                        <button id="train-btn" class="btn primary-btn full-width disabled">
+                            Analyze Model ✨
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Row 3: Metrics & Prediction -->
+                <div class="metrics-row">
+
+                    <div class="card metric-box">
+                        <p>Slope (m)</p>
+                        <h2 id="val-slope">0.00</h2>
+                    </div>
+                    <div class="card metric-box">
+                        <p>Intercept (c)</p>
+                        <h2 id="val-intercept">0.00</h2>
+                    </div>
+                    <div class="card metric-box">
+                        <p>R² Score</p>
+                        <h2 id="val-r2">0.00</h2>
+                        <span class="trend up">High Accuracy</span>
+                    </div>
+
+                    <!-- Prediction -->
+                    <div class="card prediction-card disabled" id="prediction-input-group">
+                        <h3>Predict Value</h3>
+                        <div class="predict-layout">
+                            <input type="number" id="predict-x" placeholder="Enter X...">
+                            <button id="predict-btn" class="btn icon-btn">➜</button>
+                            <div class="result-display">
+                                <p>Result</p>
+                                <h2 id="val-prediction">--</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        // Simple update helper for X/Y display
+        document.getElementById('x-variable').addEventListener('change', (e) => {
+            document.getElementById('x-display').innerText = e.target.value;
+        });
+        document.getElementById('y-variable').addEventListener('change', (e) => {
+            document.getElementById('y-display').innerText = e.target.value;
+        });
+    </script>
+</body>
+
+</html>
