@@ -38,20 +38,27 @@ The project follows a clean separation of concerns:
 
 ## 📂 Project Structure
 ```
-Universal-Regression-System/
+Universal-Regression-Analysis-System/
 │
-├── app.py                 # Main Flask Application (Backend)
-├── requirements.txt       # Python Dependencies
-├── housing_data.csv       # Sample Dataset
+├── app.py                 # Main Flask application (backend logic & APIs)
+├── requirements.txt       # Python dependencies
+├── LICENSE                # MIT License
+├── README.md              # Project documentation
 │
 ├── templates/
-│   └── index.html         # Main Dashboard UI
+│   └── index.html         # Main dashboard UI
 │
 ├── static/
-│   ├── style.css          # Modern Styling & Layout
-│   └── script.js          # Frontend Logic & API Integration
+│   ├── style.css          # Dashboard styling and responsive layout
+│   └── script.js          # Frontend logic & API integration
 │
-└── uploads/               # Temporary storage for uploaded files
+├── uploads/               # Temporary storage for uploaded CSV/Excel files
+│   ├── car_data.csv       # Sample dataset
+│   └── housing_data.csv   # Sample dataset
+│
+├── housing_data.csv       # Sample dataset (root-level)
+│
+└── venv/                  # Python virtual environment (ignored by Git)
 ```
 
 ---
@@ -62,7 +69,7 @@ Follow these steps to run the application locally:
 
 ### 1. Clone the Repository
 ```bash
-git clone <repository-url>
+git clone https://github.com/prashant-prog/Universal-Regression-Analysis-System.git
 cd Universal-Regression-System
 ```
 
@@ -138,7 +145,7 @@ Developing this project provided hands-on experience in:
 ---
 
 ## 👨‍💻 Author
-**[Your Name]**  
-*Machine Learning Enthusiast & Web Developer*
+**Prashant Sharma**  
+*Web Developer and Linux Enthusiast*
 
 Open to feedback and contributions! Feel free to reach out or submit a pull request.
